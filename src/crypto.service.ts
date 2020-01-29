@@ -9,9 +9,8 @@ export class CryptoService {
   @Inject()
   private jwtService: JwtService;
 
-  async getHello(): Promise<any> {
-    const result = await axios.get("http://10.146.1.17:3000");
-    return result.data;
+  getHello(): any {
+    return 'test';
   }
 
   encryptPassword(password: string): string {
