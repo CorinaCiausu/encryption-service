@@ -25,4 +25,14 @@ export class CryptoController {
     return this.cryptoService.checkPassword(payload.hash, payload.password);
   }
 
+  @Post('/createToken')
+  createToken(@Body() payload:{userId: string}) {
+    return this.cryptoService.createToken(payload);
+  }
+
+  @Post('/decodeToken')
+  decodeToken(@Body()payload:{token: string}) {
+    return this.cryptoService.decodeToken(payload);
+  }
+
 }
