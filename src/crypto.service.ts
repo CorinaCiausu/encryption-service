@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class CryptoService {
@@ -9,9 +10,13 @@ export class CryptoService {
     return result.data;
   }
 
-  public actualage(age: string): string {
-    let x = +age;
-    x = x * 5;
-    return x.toString();
+  encryptPassword(password: string): string {
+    const hash = bcrypt.hashSync(password, 10);
+    return hash;
+  }
+
+  checkPassword(hash: string, password: string): boolean {
+    const isValid = bcrypt.compareSync(password, hash);
+    return isValid;
   }
 }

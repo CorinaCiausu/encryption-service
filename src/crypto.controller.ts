@@ -15,14 +15,14 @@ export class CryptoController {
     return this.cryptoService.getHello();
   }
 
-  //decorator ..../ceva e endpoint
-  @Get('/ceva')
-  getCeva():any {
-    return 'Ceva nou';
+  @Post('/encrypt')
+  encryptPassword(@Body() payload: { password: string }) {
+    return this.cryptoService.encryptPassword(payload.password);
   }
 
-  @Post('/catianiai')
-  getVarsta(@Body() prevage: { age: string }):string{
-    return this.cryptoService.actualage(prevage.age);
+  @Post('/checkPassword')
+  checkPassword(@Body() payload: { hash: string, password: string }) {
+    return this.cryptoService.checkPassword(payload.hash, payload.password);
   }
+
 }
