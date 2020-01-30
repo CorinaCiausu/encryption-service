@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@nestjs/common';
-import axios from 'axios';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 
